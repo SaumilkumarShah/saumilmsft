@@ -2,8 +2,11 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-      "vmName": {
-        "value": "avdvm-1"
-      }
+        "vmName": {
+            "value": "avdvm-1"
+        },
+        "fileUris": {
+            "value": "https://agameengine2102.blob.core.windows.net/data/test.ps1?sp=r&se=2022-03-09T19:41:06Z&sv=2020-08-04&sr=b&sig=EcTfBrWoV6hCf3xqzG1MiJHwPbHcPQTdba6LcsZ%2FyB4%3D"
+        }
     }
-  }
+}
