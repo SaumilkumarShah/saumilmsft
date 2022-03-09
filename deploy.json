@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string",
+            "metadata": {
+                "description": "Virtual Machine Name."
+            }
+        }
+    },
+    "variables": {
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('vmName'),'/InstallSoftware')]",
+            "apiVersion": "2018-10-01",
+            "location": "ukwest",
+            "properties": {
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "typeHandlerVersion": "2.77",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "wmfVersion": "latest",
+                    "configuration": {
+                        "url": "https://agameengine2102.blob.core.windows.net/data/InstallSoftware.zip?sp=r&st=2022-03-09T09:59:43Z&se=2023-11-30T17:59:43Z&sv=2020-08-04&sr=b&sig=veCaglsz08OSWdq1pbvIuXwhw%2F16gLU%2Bl%2B8B9GkasI8%3D",
+                        "script": "InstallSoftware.ps1",
+                        "function": "EnvironmentConfig"
+                    },
+                    "privacy": {
+                        "dataCollection": "enable"
+                    }
+                },
+                "protectedSettings": {
+                }
+            }
+        }
+
+    ]
+}
